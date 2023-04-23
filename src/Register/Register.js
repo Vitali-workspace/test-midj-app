@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 import useFormValidator from '../../hooks/useFormValidator';
 import './Register.css';
@@ -7,6 +8,8 @@ import './Register.css';
 function Register({ onRegister }) {
 
   const { isErrors, isValues, isValid, handleChangeInput } = useFormValidator();
+
+  const { register, formState: { errors }, handleSubmit } = useForm();
 
   function submitForm(evt) {
     if (isValid) {
@@ -19,9 +22,14 @@ function Register({ onRegister }) {
     }
   }
 
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data))
+  }
+
+
   return (
     <section className='register'>
-      <form className='register__container' onSubmit={submitForm}>
+      <form className='register__container' onSubmit={handleSubmit(onSubmit)}>
         <NavLink to='/'>
           <div className='register__logo'></div>
         </NavLink>
