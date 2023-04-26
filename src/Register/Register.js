@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import useFormValidator from '../../hooks/useFormValidator';
+import useFormValidator from '../../hooks/useFormValidator'; // Хук больше не используется
 import './Register.css';
 
 
@@ -23,7 +23,7 @@ function Register({ onRegister }) {
   }
 
   const onSubmit = (data) => {
-    alert(JSON.stringify(data))
+    alert(JSON.stringify(data));
   }
 
 
@@ -52,11 +52,11 @@ function Register({ onRegister }) {
 
           <p className='register__text-input'>E-mail</p>
           <input
+            {...register('FieldEmail', { required: true })}
             className='register__input'
             type='email'
             name='email'
             onChange={handleChangeInput}
-            required
           />
           <span className='register__error'>{isErrors.email ? 'Недопустимый email' : ''}</span>
 
